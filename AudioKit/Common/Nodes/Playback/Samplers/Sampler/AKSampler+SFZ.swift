@@ -64,7 +64,7 @@ extension AKSampler {
                         } else if part.hasPrefix("hikey") {
                             highNoteNumber = MIDINoteNumber(part.components(separatedBy: "=")[1])!
                         } else if part.hasPrefix("pitch_keycenter") {
-                            noteNumber = MIDINoteNumber(part.components(separatedBy: "=")[1])!
+                            noteNumber = MIDINoteNumber.init(part.components(separatedBy: "=")[1])!
                         }
                     }
                 }
@@ -83,6 +83,12 @@ extension AKSampler {
                             loopEndPoint = Float32(part.components(separatedBy: "=")[1])!
                         } else if part.hasPrefix("sample") {
                             sample = trimmed.components(separatedBy: "sample=")[1]
+                        } else if part.hasPrefix("lokey") {
+                            lowNoteNumber = MIDINoteNumber(part.components(separatedBy: "=")[1])!
+                        } else if part.hasPrefix("hikey") {
+                            highNoteNumber = MIDINoteNumber(part.components(separatedBy: "=")[1])!
+                        } else if part.hasPrefix("pitch_keycenter") {
+                            noteNumber = MIDINoteNumber.init(part.components(separatedBy: "=")[1])!
                         }
                     }
 
